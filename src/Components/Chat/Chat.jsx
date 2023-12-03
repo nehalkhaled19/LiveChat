@@ -57,7 +57,7 @@ export default function Chat() {
                 }
                 :
                 {
-                    backgroundColor: "#fff", alignSelf: "start", borderBottomLeftRadius: "0"
+                    backgroundColor: "#748cf8", alignSelf: "start", borderBottomLeftRadius: "0"
                 }
         );
 

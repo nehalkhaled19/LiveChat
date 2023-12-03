@@ -28,7 +28,7 @@ export default function Main() {
 
 
   return <>
-    <div className=' h-100 pt-5 pb-3 containerd-flex align-items-center  main '>
+    <div className=' h-100 pt-5 pb-3 container d-flex align-items-center  main '>
       <div className="row ">
 
         <div className='col-xl-6 py-3'>

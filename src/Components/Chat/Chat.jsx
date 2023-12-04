@@ -9,10 +9,10 @@ import { DataContext } from '../../Context/userContext';
 
 export default function Chat() {
     let { auth, database, getCollectionName, selectedUser } = useContext(DataContext)
-    const [currentUser] = useAuthState(auth);
-    const [message, setMessage] = useState("");
-    const [chatMessages, setChatMessages] = useState([]);
-    const [allow, setAllow] = useState(false);
+    let [currentUser] = useAuthState(auth);
+    let [message, setMessage] = useState("");
+    let [chatMessages, setChatMessages] = useState([]);
+    let [allow, setAllow] = useState(false);
 
     useEffect(() => {
         if ((message.trim()) === "")
@@ -63,7 +63,11 @@ export default function Chat() {
 
     }
 
-
+    useEffect(() => {
+        if (chatMessages = []) {
+            document.getElementById('chats').style.height = '80vh'
+        }
+    }, [])
 
     return (
         <div className='container my-5 '>
@@ -82,18 +86,21 @@ export default function Chat() {
                     </div>
                 </div>
 
-
-                <div className='chats main-bg d-flex flex-column' id="chats">
+                <div>
+                <div className='chats main-bg d-flex flex-column' id="chats" >
+                 
                     {
                         chatMessages && chatMessages?.length > 0 && chatMessages?.map((value, index) => {
                             return (
                                 <div className='chat text-white ' key={index} style={applyStyle(value)}>
                                     <p>{value.message}</p>
-                                    <p>{date.format(new Date(value.timeStamp?.seconds * 1000), 'YYYY MMM DD hh:mm:ss A')}</p>
+                                    <p className='m-0'>{date.format(new Date(value.timeStamp?.seconds * 1000), 'YYYY MMM DD hh:mm:ss A')}</p>
                                 </div>
                             )
                         })
                     }
+                 
+                </div>
                 </div>
                 <div className='position-relative'>
                     <input type={'text'} className='form-control py-3' placeholder='enter your message here....' value={message} onChange={(e) => {
